@@ -18,3 +18,4 @@
 
 目前可以註冊 user
 目前可以登入
+無法更新密碼，錯誤訊息："message": "Cannot read properties of undefined (reading 'id')"
