@@ -55,5 +55,19 @@ const userControllers = {
         }
         generateSendJWT(user, 200, res);
     }),
+    isAuth: handleErrorAsync(async (req, res, next) => {
+        const { password, confirmPassword } = req.body;
+        if (password !== confirmPassword) {
+            return next(appError('400', '密碼不一致！', next));
+        }
+        // 設定新密碼
+        newPassword = await bcrypt.hash(password, 12);
+        // 更新新密碼
+        const user = await User.findByIdAndUpdate(req.user.id, {
+            password: newPassword,
+        });
+
+        generateSendJWT(user, 200, res);
+    }),
 };
 module.exports = userControllers;
