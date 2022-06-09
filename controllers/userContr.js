@@ -37,7 +37,6 @@ const userControllers = {
             password,
             name,
         });
-        console.log(newUser);
         generateSendJWT(newUser, 201, res);
     }),
     signIn: handleErrorAsync(async (req, res, next) => {
@@ -68,7 +67,7 @@ const userControllers = {
     }),
     profile: handleErrorAsync(async (req, res, next) => {
         res.status(200).json({
-            status: 'success',
+            status: '資料取得成功',
             user: req.user,
         });
     }),
@@ -86,7 +85,6 @@ const userControllers = {
         // if (resultUser == null) {
         //     return next(appError(400, '查無此id', next));
         // }
-        console.log(req.user.id);
         const newData = await User.findById(req.user.id).select('+email'); // 可能改email所以顯示
         res.status(200).json({ status: '資料更新成功', data: newData });
     }),
