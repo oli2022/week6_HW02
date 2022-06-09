@@ -21,4 +21,4 @@
 -   註冊 user
 -   登入
 -   無法更新密碼，錯誤訊息："message": "Cannot read properties of undefined (reading 'id')" - 己解決：程式寫錯了
-    [ x ] 更新個人檔案
+-   更新個人檔案
