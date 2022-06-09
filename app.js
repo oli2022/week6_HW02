@@ -23,11 +23,11 @@ process.on('uncaughtException', (err) => {
 });
 dotenv.config({ path: './config.env' });
 
-mongoose.connect('mongodb://localhost:27017/week6_02').then((res) => {
-    console.log('連線資料成功');
-});
+// mongoose.connect('mongodb://localhost:27017/week6_02').then((res) => {
+//     console.log('連線資料成功');
+// });
 // 連線資料庫
-//require('./connections/post');
+require('./connections/post');
 
 app.use(logger('dev'));
 app.use(cors());
