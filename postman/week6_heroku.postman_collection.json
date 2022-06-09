@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "82479ef7-a1d5-45c1-a66e-11c231a2576a",
+		"name": "week6_heroku",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20102154"
+	},
+	"item": [
+		{
+			"name": "使用者註冊",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"gogo\",\n    \"email\":\"gogo@gmail.com\",\n    \"confirmPassword\":\"12345678\",\n    \"password\": \"12345678\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "week6-01.herokuapp.com/users/sign_up",
+					"host": [
+						"week6-01",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"sign_up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "使用者登入",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"gogo@gmail.com\",\n    \"password\":\"123qweasd\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "week6-01.herokuapp.com/users/sign_in",
+					"host": [
+						"week6-01",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"sign_in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "更新密碼",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTE1ZTk2OTY1MWQ0MDM3ODA3MzFkOCIsIm5hbWUiOiJnb2dvIiwiaWF0IjoxNjU0NzQzNTYxLCJleHAiOjE2NTQ3NDM1OTF9.pVMfSGGCdoXcpVRlYZ7Lyn5K7mP4OCMvOMbm4iZs__0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"confirmPassword\":\"123qweasd\",\n    \"password\":\"123qweasd\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "week6-01.herokuapp.com/users/updatePassword",
+					"host": [
+						"week6-01",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"updatePassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取得使用者資料",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTE1ZTk2OTY1MWQ0MDM3ODA3MzFkOCIsIm5hbWUiOiJnb2dvIiwiaWF0IjoxNjU0NzQzNjcxLCJleHAiOjE2NTQ3NDM3MDF9.bm52WucCKxmkiVvlgWHNqMnOauc3seXG5dDbSPshTC4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "week6-01.herokuapp.com/users/profile",
+					"host": [
+						"week6-01",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "更新個人資料",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTE1ZTk2OTY1MWQ0MDM3ODA3MzFkOCIsIm5hbWUiOiJnb2dvIiwiaWF0IjoxNjU0NzQzODA3LCJleHAiOjE2NTQ3NDM4Mzd9.OIN0XS6XLY5RReXRn1HDlKYg0dNg2MTcuUHvLK7p0ig",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"gogo-01\",\n    \"email\":\"gogo-01@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "week6-01.herokuapp.com/users/updateProfile",
+					"host": [
+						"week6-01",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"updateProfile"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
