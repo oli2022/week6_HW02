@@ -1,16 +1,13 @@
 const express = require('express');
-
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const validator = require('validator');
-
 const router = express.Router();
 
 // 引用檔案 - 錯誤訊息
 const appError = require('../servers/appError');
 const handleErrorAsync = require('../servers/handleErrorAsync');
 const { isAuth, generateSendJWT } = require('../servers/auth');
-
 const User = require('../Models/usersModel');
 
 const userControllers = {
@@ -55,7 +52,7 @@ const userControllers = {
         }
         generateSendJWT(user, 200, res);
     }),
-    isAuth: handleErrorAsync(async (req, res, next) => {
+    updatePassword: handleErrorAsync(async (req, res, next) => {
         const { password, confirmPassword } = req.body;
         if (password !== confirmPassword) {
             return next(appError('400', '密碼不一致！', next));
@@ -68,6 +65,30 @@ const userControllers = {
         });
 
         generateSendJWT(user, 200, res);
+    }),
+    profile: handleErrorAsync(async (req, res, next) => {
+        res.status(200).json({
+            status: 'success',
+            user: req.user,
+        });
+    }),
+    updateProfile: handleErrorAsync(async (req, res, next) => {
+        const data = req.body;
+        const newArray = Object.keys(data);
+
+        if (newArray.includes('name') && !data.name) {
+            return next(appError(400, '名字不為空', next));
+        } else if (newArray.includes('email') && !data.email) {
+            return next(appError(400, 'Email不為空', next));
+        }
+
+        // const resultUser = await User.findByIdAndUpdate(req.user.id, data);
+        // if (resultUser == null) {
+        //     return next(appError(400, '查無此id', next));
+        // }
+        console.log(req.user.id);
+        const newData = await User.findById(req.user.id).select('+email'); // 可能改email所以顯示
+        res.status(200).json({ status: '資料更新成功', data: newData });
     }),
 };
 module.exports = userControllers;
